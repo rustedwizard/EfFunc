@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace EfFunc.Models
 {
+    //Use Fluent API in DbContext class. So this class can be kept clean
     public class Todos
     {
         public Guid Id { get; set; }

@@ -1,9 +1,10 @@
-﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using EfFunc.DbContexts;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using EfFunc.DbContexts;
 using System;
 
+//This annotation tells Azure function EfFunc.StartUp is the place to start
 [assembly: FunctionsStartup(typeof(EfFunc.StartUp))]
 
 namespace EfFunc

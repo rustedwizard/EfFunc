@@ -1,14 +1,14 @@
-using System.Threading.Tasks;
+using EfFunc.DbContexts;
+using EfFunc.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using EfFunc.DbContexts;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.IO;
-using EfFunc.Models;
+using System.Threading.Tasks;
 
 namespace EfFunc
 {

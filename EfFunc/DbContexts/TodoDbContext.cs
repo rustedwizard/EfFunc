@@ -1,5 +1,4 @@
-﻿using System;
-using EfFunc.Models;
+﻿using EfFunc.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EfFunc.DbContexts
@@ -10,14 +9,6 @@ namespace EfFunc.DbContexts
 
         public TodoDbContext(DbContextOptions op) : base(op)
         { }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder op)
-        {
-            if (!op.IsConfigured)
-            {
-                op.UseSqlServer(Environment.GetEnvironmentVariable("SqlConnection"));
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
