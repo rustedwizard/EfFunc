@@ -15,5 +15,14 @@ namespace EfFunc.Models
         public DateTime? StartTime { get; set; }
 
         public DateTime? EndTime { get; set; }
+
+
+        public bool CompareToTodo(Todos todo)
+        {
+            var res = true;
+            if (Name != null && todo.Name.Contains(Name)) return false;
+            if (Description != null && todo.Description.Contains(Description)) return false;
+            return res;
+        }
     }
 }

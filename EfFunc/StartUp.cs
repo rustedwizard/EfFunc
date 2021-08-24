@@ -1,11 +1,12 @@
-﻿using EfFunc.DbContexts;
+﻿using System;
+using EfFunc;
+using EfFunc.DbContexts;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 //This annotation tells Azure function EfFunc.StartUp is the place to start
-[assembly: FunctionsStartup(typeof(EfFunc.StartUp))]
+[assembly: FunctionsStartup(typeof(StartUp))]
 
 namespace EfFunc
 {
@@ -17,7 +18,7 @@ namespace EfFunc
             //Handling the sql server connection setup
             var connectionString = Environment.GetEnvironmentVariable("SqlConnection");
             _ = builder.Services.AddDbContext<TodoDbContext>(op =>
-                  SqlServerDbContextOptionsExtensions.UseSqlServer(op, connectionString));
+                op.UseSqlServer(connectionString ?? throw new InvalidOperationException("Connection String is empty")));
         }
     }
 }

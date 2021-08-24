@@ -1,7 +1,7 @@
-﻿using EfFunc.DbContexts;
+﻿using System;
+using EfFunc.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using System;
 
 namespace EfFunc.DbContextFactory
 {
@@ -11,7 +11,8 @@ namespace EfFunc.DbContextFactory
         public TodoDbContext CreateDbContext(string[] args)
         {
             var opBuilder = new DbContextOptionsBuilder<TodoDbContext>();
-            opBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SqlConnection"));
+            opBuilder.UseSqlServer(Environment.GetEnvironmentVariable("SqlConnection") ??
+                                   throw new InvalidOperationException("Connection String is empty"));
             return new TodoDbContext(opBuilder.Options);
         }
     }

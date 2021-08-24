@@ -5,10 +5,11 @@ namespace EfFunc.DbContexts
 {
     public class TodoDbContext : DbContext
     {
-        public DbSet<Todos> todos { get; set; }
-
         public TodoDbContext(DbContextOptions op) : base(op)
-        { }
+        {
+        }
+
+        public DbSet<Todos> Todos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
